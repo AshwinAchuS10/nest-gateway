@@ -5,6 +5,7 @@ import {
 } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { GatewayConfig } from './config/gateway.config';
+import { LoggingInterceptor } from './middlewares/logging.interceptor';
 import { AppModule } from './modules/app.module';
 
 async function bootstrap() {
@@ -18,6 +19,9 @@ async function bootstrap() {
     .addTag('users')
     .setVersion('1.0')
     .build();
+
+  app.useGlobalInterceptors(new LoggingInterceptor());
+
 
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
