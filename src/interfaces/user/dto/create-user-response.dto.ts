@@ -7,7 +7,7 @@ export class CreateUserResponseDto {
   @ApiProperty({
     example: {
       user: {
-        email: 'test@denrox.com',
+        email: 'someone@domain.com',
         is_confirmed: false,
         id: '5d987c3bfb881ec86b476bcc',
       },
@@ -19,5 +19,8 @@ export class CreateUserResponseDto {
     token: string;
   };
   @ApiProperty({ example: null, nullable: true })
-  errors: { [key: string]: any };
+  errors?: { [key: string]: any };
+
+  @ApiProperty({ example: null, nullable: true })
+  errorMetadata?: { [key: string]: any };
 }

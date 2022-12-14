@@ -1,6 +1,6 @@
 import { Transport } from '@nestjs/microservices';
 
-export class ConfigService {
+export class GatewayConfig {
   private readonly envConfig: { [key: string]: any } = null;
 
   constructor() {
@@ -9,8 +9,8 @@ export class ConfigService {
 
     this.envConfig.userService = {
       options: {
-        port: 8003,
-        host: '0.0.0.0',
+        port: process.env.USER_SERVICE_PORT,
+        host: process.env.USER_SERVICE_HOST,
       },
       transport: Transport.TCP,
     };

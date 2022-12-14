@@ -5,4 +5,5 @@ export interface IServiceUserCreateResponse {
   message: string;
   user: IUser | null;
   errors: { [key: string]: any };
+  errorMetadata: { [key: string]: any };
 }
