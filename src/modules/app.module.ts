@@ -1,22 +1,22 @@
 import { Module } from '@nestjs/common';
 import { ClientProxyFactory } from '@nestjs/microservices';
 
-import { UsersController } from '../controllers/users.controller';
+import { ManagementServiceController } from '../controllers/management.service.controller';
 
 
-import { GatewayConfig } from '../config/gateway.config';
+import { GatewayConfig } from '../configuration/gateway.config';
 import { HealthController } from '../controllers/health.controller';
 
 @Module({
   imports: [],
-  controllers: [UsersController, HealthController],
+  controllers: [ManagementServiceController, HealthController],
   providers: [
     GatewayConfig,
     {
-      provide: 'USER_SERVICE',
+      provide: 'MANAGEMENT_SERVICE',
       useFactory: (gatewayConfig: GatewayConfig) => {
-        const userServiceOptions = gatewayConfig.get('userService');
-        return ClientProxyFactory.create(userServiceOptions);
+        const managementServiceOptions = gatewayConfig.get('managementService');
+        return ClientProxyFactory.create(managementServiceOptions);
       },
       inject: [GatewayConfig],
     },

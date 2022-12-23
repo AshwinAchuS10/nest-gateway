@@ -1,16 +1,76 @@
 {
+  "exclude": [
+    "node_modules"
+  ],
   "compilerOptions": {
+    "target": "es2018",
     "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es2017",
     "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "inlineSources": true,
+    "sourceRoot": "/",
+    "rootDir": "./",
+    "outDir": "./build",
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    // "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "paths": {
+      "application/*": [
+        "./src/application/*"
+      ],
+      "domain/*": [
+        "./src/domain/*"
+      ],
+      "interface/*": [
+        "src/interface/*"
+      ],
+      "modules/*": [
+        "src/modules/*"
+      ],
+      "libraries/*": [
+        "./src/libraries/*"
+      ],
+      "controllers/*": [
+        "./src/controllers/*"
+      ],
+      "infrastructure/*": [
+        "./src/infrastructure/*"
+      ],
+      "configuration/*": [
+        "./src/configuration/*"
+      ],
+      "common/*": [
+        "./src/common/*"
+      ],
+      "constants/*": [
+        "./src/constants/*"
+      ],
+      "resources/*": [
+        "./src/resources/*"
+      ],
+      "middleware/*": [
+        "./src/middleware/*"
+      ],
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "typings/*"
+    ],
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "**/*"
+  ]
 }

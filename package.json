@@ -1,16 +1,27 @@
 {
-  "name": "gateway",
+  "name": "gateway-service",
   "version": "0.0.1",
   "description": "",
-  "author": "",
-  "license": "MIT",
+  "author": "Ashwin S",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.build.json",
-    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node -r dotenv/config dist/main.js dotenv_config_path=./.env\"",
-    "start:test": "tsc-watch -p tsconfig.build.json --onSuccess \"node -r dotenv/config dist/main.js dotenv_config_path=./.env.test\"",
-    "start:prod": "node dist/main.js",
-    "lint": "eslint \"{src,test}/**/*.ts\" --fix",
-    "test": "jest --config ./test/jest-e2e.json --detectOpenHandles"
+    "build": "rimraf build && tsc -p tsconfig.build.json",
+    "start:dev": "tsc-watch --onSuccess \"node -r dotenv/config build/src/main.js dotenv_config_path=./.env\"",
+    "start:test": "tsc-watch -p tsconfig.build.json --onSuccess \"node -r dotenv/config build/main.js dotenv_config_path=./.env.test\"",
+    "start:prod": "node build/main.js",
+    "lint": "eslint \"src/**/*.ts\" --fix"
+  },
+  "_moduleAliases": {
+    "application": "build/src/application",
+    "common": "build/src/common",
+    "modules": "build/src/modules",
+    "domain": "build/src/domain",
+    "controllers": "build/src/controllers",
+    "configuration": "build/src/configuration",
+    "libraries": "build/src/libraries",
+    "interface": "build/src/interface",
+    "middleware": "build/src/middleware",
+    "constants": "build/src/constants",
+    "src": "build/src"
   },
   "dependencies": {
     "@fastify/static": "^6.6.0",
@@ -21,6 +32,7 @@
     "@nestjs/platform-fastify": "9.2.1",
     "@nestjs/swagger": "6.1.4",
     "@nestjs/terminus": "^9.1.4",
+    "module-alias": "^2.2.2",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
     "rxjs": "7.3.0",

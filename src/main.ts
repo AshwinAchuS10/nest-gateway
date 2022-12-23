@@ -1,12 +1,14 @@
+import 'module-alias/register';
+import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
 import {
   FastifyAdapter,
   NestFastifyApplication
 } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { GatewayConfig } from './config/gateway.config';
-import { LoggingInterceptor } from './middlewares/logging.interceptor';
-import { AppModule } from './modules/app.module';
+import { GatewayConfig } from 'configuration/gateway.config';
+import { LoggingInterceptor } from 'middleware/logging.interceptor';
+import { AppModule } from 'modules/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -16,7 +18,7 @@ async function bootstrap() {
 
   const options = new DocumentBuilder()
     .setTitle('API docs')
-    .addTag('users')
+    .addTag('categories')
     .setVersion('1.0')
     .build();
 
